@@ -20,14 +20,18 @@ class HangpersonGame
   end
   
   def guess(guessed_letter)
+  
+   small_letter =  guessed_letter.downcase
     
     
-    if @word.include?(guessed_letter) && (!@guesses.include?(guessed_letter))
-      @guesses.concat(guessed_letter)
-      
-    elsif  !@wrong_guesses.include?(guessed_letter)
-      @wrong_guesses.concat(guessed_letter) 
-      
+    if @word.include?(small_letter) && (!@guesses.include?(small_letter))
+      @guesses.concat(small_letter)
+      return true
+    elsif  !@word.include?(small_letter) && (!@wrong_guesses.include?(small_letter)) 
+        @wrong_guesses.concat(small_letter) 
+        return true
+    else
+      return false
     end
   
     
