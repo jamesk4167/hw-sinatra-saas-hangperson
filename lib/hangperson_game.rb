@@ -22,9 +22,12 @@ class HangpersonGame
   def guess(guessed_letter)
     
     
-    if @word.include?(guessed_letter) 
-      guesses.concat(guessed_letter)
-      return true
+    if @word.include?(guessed_letter) && (!@guesses.include?(guessed_letter))
+      @guesses.concat(guessed_letter)
+      
+    elsif  !@wrong_guesses.include?(guessed_letter)
+      @wrong_guesses.concat(guessed_letter) 
+      
     end
   
     
