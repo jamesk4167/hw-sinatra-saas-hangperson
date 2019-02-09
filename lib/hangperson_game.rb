@@ -14,27 +14,32 @@ class HangpersonGame
    end
   
   def initialize(word)
+    
     @word = word
     @guesses = ""
     @wrong_guesses = ""
   end
   
   def guess(guessed_letter)
-  
-   small_letter =  guessed_letter.downcase
+    raise ArgumentError, 'Argument Cannot be empty' if guessed_letter.empty? == true
+
+    small_letter =  guessed_letter.downcase
+    
+   
     
     
     if @word.include?(small_letter) && (!@guesses.include?(small_letter))
       @guesses.concat(small_letter)
       return true
     elsif  !@word.include?(small_letter) && (!@wrong_guesses.include?(small_letter)) 
-        @wrong_guesses.concat(small_letter) 
-        return true
+      @wrong_guesses.concat(small_letter) 
+      return true
     else
       return false
     end
-  
+      
     
+   
   end  
 
   # You can test it by running $ bundle exec irb -I. -r app.rb
