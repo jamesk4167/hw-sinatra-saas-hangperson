@@ -21,23 +21,28 @@ class HangpersonGame
   end
   
   def guess(guessed_letter)
-    raise ArgumentError, 'Argument Cannot be empty' if guessed_letter.empty? == true
-
-    small_letter =  guessed_letter.downcase
     
-   
+  
+  
     
-    
-    if @word.include?(small_letter) && (!@guesses.include?(small_letter))
-      @guesses.concat(small_letter)
-      return true
-    elsif  !@word.include?(small_letter) && (!@wrong_guesses.include?(small_letter)) 
-      @wrong_guesses.concat(small_letter) 
-      return true
-    else
-      return false
-    end
+    if guessed_letter =~ /[[:alpha:]]/
+      small_letter =  guessed_letter.downcase
       
+     
+      
+      
+      if @word.include?(small_letter) && (!@guesses.include?(small_letter))
+        @guesses.concat(small_letter)
+        return true
+      elsif  !@word.include?(small_letter) && (!@wrong_guesses.include?(small_letter)) 
+        @wrong_guesses.concat(small_letter) 
+        return true
+      else
+        return false
+      end
+    else
+      raise ArgumentError
+    end    
     
    
   end  
