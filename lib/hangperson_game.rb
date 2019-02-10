@@ -6,20 +6,20 @@ class HangpersonGame
   # Get a word from remote "random word" service
   
   
-  attr_accessor :word, :guesses, :wrong_guesses
+  attr_accessor :word, :guesses, :wrong_guesses, 
   
   
 
    def initialize()
    end
-  
+  #initialize constructor using values from first test
   def initialize(word)
     
     @word = word
     @guesses = ""
     @wrong_guesses = ""
   end
-  
+  # create function
   def guess(guessed_letter)
     
   
@@ -65,6 +65,19 @@ class HangpersonGame
     
   end
 
+  def check_win_or_lose
+    count = 0
+    return :lose if @wrong_guesses.length >= 7
+    @word.split('').each do |x|
+      if @word.include? x
+        count += 1 if @guesses.include? x
+      end  
+    end
+    if count == @word.length then :win
+    else :play end
+  
+   
+  end 
   # You can test it by running $ bundle exec irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> HangpersonGame.get_random_word
   #  => "cooking"   <-- some random word
